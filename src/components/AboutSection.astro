@@ -1,0 +1,736 @@
+---
+// About Section Component
+---
+
+<section class="about">
+  <div class="about__glow-container">
+    <div class="about__glow about__glow--orange"></div>
+    <div class="about__glow about__glow--yellow"></div>
+  </div>
+
+  <div class="about__container">
+    <!-- Mobile Only Header -->
+    <div class="about__mobile-header">
+      <div class="about__mobile-tagline">
+        <span class="about__mobile-tagline-icon"></span>
+        <span class="about__mobile-tagline-text">ABOUT US</span>
+      </div>
+      <h2 class="about__mobile-headline">
+        We <span class="about__mobile-headline--highlight">solve</span> foundation problems by <span class="about__mobile-headline--highlight">stabilizing</span> the soil beneath.
+      </h2>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="about__stats-bar scroll-animate">
+      <div class="about__stat">
+        <div class="about__stat-number">
+          <span class="count-up" data-target="95">0</span><span class="about__stat-accent">%</span>
+        </div>
+        <div class="about__stat-label">Less Disruption vs Traditional Methods</div>
+      </div>
+
+      <div class="about__divider"></div>
+
+      <div class="about__stat">
+        <div class="about__stat-number">
+          <span class="count-up" data-target="5">0</span><span class="about__stat-accent">+</span>
+        </div>
+        <div class="about__stat-label">States Nationwide Service Coverage</div>
+      </div>
+
+      <div class="about__divider"></div>
+
+      <div class="about__stat">
+        <div class="about__stat-number">
+          <span class="count-up" data-target="98">0</span><span class="about__stat-accent">%</span>
+        </div>
+        <div class="about__stat-label">Project Success Rate</div>
+      </div>
+
+      <div class="about__divider"></div>
+
+      <div class="about__stat">
+        <div class="about__stat-number">
+          <span class="count-up" data-target="15">0</span><span class="about__stat-accent">+</span>
+        </div>
+        <div class="about__stat-label">Years Warranty Coverage</div>
+      </div>
+    </div>
+
+    <!-- Two Column Content -->
+    <div class="about__content">
+      <!-- Left Column: Image + Team -->
+      <div class="about__left scroll-animate scroll-animate--delay-1">
+        <div class="about__image-wrapper">
+          <img
+            src="/images/about-stratalock-usa-home.webp"
+            alt="Stratalock worker performing soil injection"
+            class="about__image"
+          />
+        </div>
+
+        <div class="about__team-strip">
+          <div class="about__team-avatars">
+            <img src="/images/circle-image-for-about.webp" alt="Team member" class="about__avatar" />
+            <img src="/images/circle-image-for-about.webp" alt="Team member" class="about__avatar" />
+            <img src="/images/circle-image-for-about.webp" alt="Team member" class="about__avatar" />
+            <img src="/images/circle-image-for-about.webp" alt="Team member" class="about__avatar" />
+          </div>
+
+          <div class="about__team-divider"></div>
+
+          <div class="about__experience">
+            <span class="about__experience-number">40+</span>
+            <span class="about__experience-label">Years Combined Experience</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Text Content -->
+      <div class="about__right scroll-animate scroll-animate--delay-2">
+        <p class="about__description">
+          Unlike traditional pier systems, our deep soil injection technology addresses the root cause of foundation settlement—weak subgrade soil. Using expanding polymer, we strengthen the soil's load-bearing capacity, providing a less-invasive, highly effective solution for residential, commercial, and infrastructure projects.
+        </p>
+
+        <div class="about__tagline about__tagline--desktop">
+          <span class="about__tagline-icon"></span>
+          <span class="about__tagline-text">ABOUT US</span>
+        </div>
+
+        <h2 class="about__headline about__headline--desktop">
+          We <span class="about__headline--highlight">solve</span> foundation problems by <span class="about__headline--highlight">stabilizing</span> the soil beneath.
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    position: relative;
+    background: linear-gradient(108.67deg, #111111 0%, #161616 100%);
+    padding: 50px 0;
+    overflow: hidden;
+  }
+
+  .about__glow-container {
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    width: 350px;
+    height: 350px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .about__glow {
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .about__glow--orange {
+    width: 350px;
+    height: 350px;
+    background: var(--color-orange-accent);
+    filter: blur(176px);
+    opacity: 1;
+  }
+
+  .about__glow--yellow {
+    width: 199px;
+    height: 199px;
+    background: var(--color-orange-yellow);
+    filter: blur(75px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .about__container {
+    max-width: 1452px;
+    margin: 0 auto;
+    padding: 0 90px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Stats Bar */
+  .about__stats-bar {
+    max-width: 1272px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 111px;
+    padding: 20px 0;
+  }
+
+  .about__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: default;
+    transition: transform 0.3s ease;
+  }
+
+  .about__stat:hover {
+    transform: translateY(-4px);
+  }
+
+  .about__stat-number {
+    font-family: var(--font-manrope);
+    font-size: 40px;
+    font-weight: 400;
+    color: var(--color-white);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  .about__stat:hover .about__stat-number {
+    text-shadow: 0 0 20px rgba(250, 117, 35, 0.3);
+  }
+
+  .about__stat-accent {
+    color: var(--color-orange-primary);
+    transition: color 0.3s ease;
+  }
+
+  .about__stat:hover .about__stat-accent {
+    color: var(--color-orange-light);
+  }
+
+  .about__stat-label {
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: var(--color-gray-light);
+    max-width: 250px;
+    transition: color 0.3s ease;
+  }
+
+  .about__stat:hover .about__stat-label {
+    color: var(--color-white);
+  }
+
+  .about__divider {
+    width: 1px;
+    height: 29px;
+    background: var(--color-gray-dark);
+    transition: height 0.3s ease, background 0.3s ease;
+  }
+
+  .about__stats-bar:hover .about__divider {
+    height: 40px;
+    background: var(--color-orange-primary);
+  }
+
+  /* Two Column Content */
+  .about__content {
+    display: grid;
+    grid-template-columns: 518px 1fr;
+    gap: 100px;
+    margin-top: 60px;
+    max-width: 1272px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Left Column */
+  .about__left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .about__image-wrapper {
+    width: 518px;
+    height: 428px;
+    background: #C4C4C4;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .about__image-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(250, 117, 35, 0) 0%, rgba(250, 117, 35, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .about__image-wrapper:hover::after {
+    opacity: 1;
+  }
+
+  .about__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .about__image-wrapper:hover .about__image {
+    transform: scale(1.05);
+  }
+
+  .about__team-strip {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    margin: -15px;
+    border-radius: 12px;
+    transition: background 0.3s ease;
+  }
+
+  .about__team-strip:hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .about__team-avatars {
+    display: flex;
+    align-items: center;
+  }
+
+  .about__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid var(--color-white);
+    object-fit: cover;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .about__avatar:not(:last-child) {
+    margin-right: -10px;
+  }
+
+  .about__avatar:hover {
+    transform: translateY(-5px) scale(1.1);
+    border-color: var(--color-orange-primary);
+    box-shadow: 0 5px 15px rgba(250, 117, 35, 0.3);
+    z-index: 10;
+    position: relative;
+  }
+
+  .about__team-divider {
+    width: 1px;
+    height: 31px;
+    background: #3D3B39;
+    transition: height 0.3s ease, background 0.3s ease;
+  }
+
+  .about__team-strip:hover .about__team-divider {
+    height: 40px;
+    background: var(--color-orange-primary);
+  }
+
+  .about__experience {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    cursor: default;
+    transition: transform 0.3s ease;
+  }
+
+  .about__experience:hover {
+    transform: translateX(5px);
+  }
+
+  .about__experience-number {
+    font-family: var(--font-poppins);
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--color-orange-primary);
+    transition: text-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .about__experience:hover .about__experience-number {
+    text-shadow: 0 0 25px rgba(250, 117, 35, 0.5);
+    transform: scale(1.05);
+  }
+
+  .about__experience-label {
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-white);
+    max-width: 100px;
+    line-height: 24px;
+    transition: color 0.3s ease;
+  }
+
+  .about__experience:hover .about__experience-label {
+    color: var(--color-gray-light);
+  }
+
+  /* Mobile Only Header - Hidden by default */
+  .about__mobile-header {
+    display: none;
+  }
+
+  /* Right Column */
+  .about__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .about__description {
+    font-family: var(--font-poppins);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    color: var(--color-gray-medium);
+    max-width: 518px;
+    margin: 0;
+  }
+
+  .about__tagline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 40px;
+    margin-bottom: 24px;
+    cursor: default;
+  }
+
+  .about__tagline-icon {
+    width: 11px;
+    height: 11px;
+    background: var(--color-orange-primary);
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .about__tagline:hover .about__tagline-icon {
+    transform: rotate(45deg) scale(1.2);
+    box-shadow: 0 0 15px rgba(250, 117, 35, 0.5);
+  }
+
+  .about__tagline-text {
+    font-family: var(--font-manrope);
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--color-white);
+    letter-spacing: 0.5px;
+    transition: letter-spacing 0.3s ease;
+  }
+
+  .about__tagline:hover .about__tagline-text {
+    letter-spacing: 2px;
+  }
+
+  .about__headline {
+    font-family: var(--font-manrope);
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 120%;
+    color: var(--color-gray-medium);
+    max-width: 518px;
+    margin: 0;
+  }
+
+  .about__headline--highlight {
+    color: var(--color-white);
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease;
+  }
+
+  .about__headline--highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-orange-primary), var(--color-orange-light));
+    transition: width 0.4s ease;
+  }
+
+  .about__headline--highlight:hover {
+    color: var(--color-orange-light);
+  }
+
+  .about__headline--highlight:hover::after {
+    width: 100%;
+  }
+
+  /* Responsive */
+  @media (max-width: 1400px) {
+    .about__content {
+      gap: 60px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .about__container {
+      padding: 0 40px;
+    }
+
+    .about__stats-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 20px;
+      min-height: auto;
+    }
+
+    .about__divider {
+      display: none;
+    }
+
+    .about__content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .about__image-wrapper {
+      width: 100%;
+      max-width: 518px;
+    }
+
+    .about__left {
+      align-items: center;
+    }
+
+    .about__headline {
+      font-size: 36px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about__container {
+      padding: 0 20px;
+    }
+
+    /* Show Mobile Header on Mobile */
+    .about__mobile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .about__mobile-tagline {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: default;
+    }
+
+    .about__mobile-tagline-icon {
+      width: 11px;
+      height: 11px;
+      background: var(--color-orange-primary);
+      flex-shrink: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .about__mobile-tagline:hover .about__mobile-tagline-icon {
+      transform: rotate(45deg) scale(1.2);
+      box-shadow: 0 0 15px rgba(250, 117, 35, 0.5);
+    }
+
+    .about__mobile-tagline-text {
+      font-family: var(--font-manrope);
+      font-size: 16px;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: var(--color-white);
+      letter-spacing: 0.5px;
+      transition: letter-spacing 0.3s ease;
+    }
+
+    .about__mobile-tagline:hover .about__mobile-tagline-text {
+      letter-spacing: 2px;
+    }
+
+    .about__mobile-headline {
+      font-family: var(--font-manrope);
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 120%;
+      color: var(--color-gray-medium);
+      margin: 0;
+      max-width: 100%;
+    }
+
+    .about__mobile-headline--highlight {
+      color: var(--color-white);
+      position: relative;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+
+    .about__mobile-headline--highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-orange-primary), var(--color-orange-light));
+      transition: width 0.4s ease;
+    }
+
+    .about__mobile-headline--highlight:hover {
+      color: var(--color-orange-light);
+    }
+
+    .about__mobile-headline--highlight:hover::after {
+      width: 100%;
+    }
+
+    .about__stats-bar {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .about__stat {
+      text-align: center;
+      align-items: center;
+    }
+
+    /* Hide desktop tagline and headline on mobile */
+    .about__tagline--desktop,
+    .about__headline--desktop {
+      display: none;
+    }
+
+    .about__stat-label {
+      max-width: 100%;
+    }
+
+    .about__team-strip {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .about__description {
+      font-size: 18px;
+      line-height: 27px;
+      color: var(--color-white);
+    }
+
+    .about__headline {
+      font-size: 28px;
+    }
+  }
+
+  /* Scroll Animations */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-animate--delay-1 {
+    transition-delay: 0.15s;
+  }
+
+  .scroll-animate--delay-2 {
+    transition-delay: 0.3s;
+  }
+
+  .scroll-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-animate {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .about__stat,
+    .about__stat-number,
+    .about__stat-accent,
+    .about__stat-label,
+    .about__divider,
+    .about__image,
+    .about__image-wrapper::after,
+    .about__avatar,
+    .about__team-strip,
+    .about__team-divider,
+    .about__experience,
+    .about__experience-number,
+    .about__experience-label,
+    .about__tagline-icon,
+    .about__tagline-text,
+    .about__headline--highlight,
+    .about__headline--highlight::after,
+    .about__mobile-tagline-icon,
+    .about__mobile-tagline-text,
+    .about__mobile-headline--highlight,
+    .about__mobile-headline--highlight::after {
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Count-up animation function
+    function animateCountUp(element) {
+      const target = parseInt(element.dataset.target, 10);
+      const duration = 2000;
+      const startTime = performance.now();
+
+      function updateCount(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Easing function for smooth deceleration
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(easeOut * target);
+
+        element.textContent = current;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCount);
+        } else {
+          element.textContent = target;
+        }
+      }
+
+      requestAnimationFrame(updateCount);
+    }
+
+    // Scroll animation observer
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+
+          // Trigger count-up for stats in this element
+          entry.target.querySelectorAll('.count-up').forEach(counter => {
+            animateCountUp(counter);
+          });
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.about .scroll-animate').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>

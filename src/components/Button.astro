@@ -1,0 +1,50 @@
+---
+interface Props {
+  text: string;
+  size?: 'small' | 'large';
+  href?: string;
+}
+
+const { text, size = 'small', href = '#' } = Astro.props;
+---
+
+<a href={href} class={`button button--${size}`}>
+  {text}
+</a>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-poppins);
+    font-weight: 400;
+    color: var(--color-white);
+    background:
+      linear-gradient(327.66deg, var(--color-orange-gradient-1) 15.95%, rgba(255, 169, 130, 0) 46.52%),
+      linear-gradient(39.26deg, rgba(241, 75, 0, 0) 55.26%, var(--color-orange-gradient-2) 86.89%),
+      var(--color-orange-dark);
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 59, 0, 0.3);
+  }
+
+  .button--small {
+    font-size: 16px;
+    padding: 10px 20px;
+    min-width: 150px;
+  }
+
+  .button--large {
+    font-size: 20px;
+    padding: 10px 30px;
+    min-width: 175px;
+    height: 50px;
+    text-shadow: 0px 1px 1.1px rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+  }
+</style>

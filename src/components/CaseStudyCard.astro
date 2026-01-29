@@ -1,0 +1,665 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  type: 'fullImage' | 'splitLayout' | 'splitWithProgress';
+  imageSrc: string;
+  imageAlt: string;
+  stats?: Array<{ number: string; label: string }>;
+  progressBar?: { label: string; percentage: string; fillWidth: string };
+  glowPosition?: 'top-right' | 'bottom-right' | 'top-left';
+  hideCorners?: boolean;
+}
+
+const { title, description, type, imageSrc, imageAlt, stats, progressBar, glowPosition, hideCorners } = Astro.props;
+---
+
+<div class={`case-study-card case-study-card--${type}`}>
+  {glowPosition && (
+    <div class={`case-study-card__card-glow case-study-card__card-glow--${glowPosition}`}>
+      <div class="case-study-card__card-glow-orange"></div>
+      <div class="case-study-card__card-glow-yellow"></div>
+    </div>
+  )}
+  {type === 'fullImage' ? (
+    <>
+      <div class="case-study-card__image-full">
+        <img src={imageSrc} alt={imageAlt} class="case-study-card__bg-image" />
+        <svg class="case-study-card__corner case-study-card__corner--top-left" width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21.4909 25.9348V39.5M21.4909 0.5V14.0652M15.1087 19.9915H0.5M42.5 19.9915H27.8913" stroke="white" stroke-linecap="round"/>
+        </svg>
+        <svg class="case-study-card__corner case-study-card__corner--top-right" width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21.4909 25.9348V39.5M21.4909 0.5V14.0652M15.1087 19.9915H0.5M42.5 19.9915H27.8913" stroke="white" stroke-linecap="round"/>
+        </svg>
+        <svg class="case-study-card__corner case-study-card__corner--bottom-left" width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21.4909 25.9348V39.5M21.4909 0.5V14.0652M15.1087 19.9915H0.5M42.5 19.9915H27.8913" stroke="white" stroke-linecap="round"/>
+        </svg>
+        <svg class="case-study-card__corner case-study-card__corner--bottom-right" width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21.4909 25.9348V39.5M21.4909 0.5V14.0652M15.1087 19.9915H0.5M42.5 19.9915H27.8913" stroke="white" stroke-linecap="round"/>
+        </svg>
+        <div class="case-study-card__overlay"></div>
+      </div>
+      <div class="case-study-card__content-overlay">
+        <h3 class="case-study-card__title">{title}</h3>
+        <p class="case-study-card__description">{description}</p>
+      </div>
+    </>
+  ) : (
+    <>
+      <div class="case-study-card__content">
+        <h3 class="case-study-card__title">{title}</h3>
+        <p class="case-study-card__description">{description}</p>
+
+        {stats && (
+          <div class="case-study-card__stats">
+            {stats.map((stat) => (
+              <div class="case-study-card__stat">
+                <span class="case-study-card__stat-number">{stat.number}</span>
+                <span class="case-study-card__stat-label">{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {progressBar && (
+          <div class="case-study-card__progress">
+            <div class="case-study-card__progress-header">
+              <span class="case-study-card__progress-label">{progressBar.label}</span>
+              <span class="case-study-card__progress-percentage">{progressBar.percentage}</span>
+            </div>
+            <div class="case-study-card__progress-bar">
+              <div
+                class="case-study-card__progress-fill"
+                style={`width: ${progressBar.fillWidth}`}
+              ></div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div class="case-study-card__image-vertical">
+        <img src={imageSrc} alt={imageAlt} class="case-study-card__vertical-image" />
+        <div class="case-study-card__vertical-overlay"></div>
+        {!hideCorners && (
+          <>
+            <svg class="case-study-card__corner case-study-card__corner--top-left" width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.4909 25.9348V39.5M21.4909 0.5V14.0652M15.1087 19.9915H0.5M42.5 19.9915H27.8913" stroke="white" stroke-linecap="round"/>
+            </svg>
+            <svg class="case-study-card__corner case-study-card__corner--top-right" width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.4909 25.9348V39.5M21.4909 0.5V14.0652M15.1087 19.9915H0.5M42.5 19.9915H27.8913" stroke="white" stroke-linecap="round"/>
+            </svg>
+            <svg class="case-study-card__corner case-study-card__corner--bottom-left" width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.4909 25.9348V39.5M21.4909 0.5V14.0652M15.1087 19.9915H0.5M42.5 19.9915H27.8913" stroke="white" stroke-linecap="round"/>
+            </svg>
+            <svg class="case-study-card__corner case-study-card__corner--bottom-right" width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.4909 25.9348V39.5M21.4909 0.5V14.0652M15.1087 19.9915H0.5M42.5 19.9915H27.8913" stroke="white" stroke-linecap="round"/>
+            </svg>
+          </>
+        )}
+      </div>
+    </>
+  )}
+</div>
+
+<style>
+  .case-study-card {
+    position: relative;
+    background: #111111;
+    border: 1px solid #525252;
+    overflow: hidden;
+    height: 470px;
+    cursor: default;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .case-study-card:hover {
+    border-color: rgba(241, 75, 0, 0.4);
+    box-shadow: 0 0 30px rgba(241, 75, 0, 0.1);
+  }
+
+  /* Card Glow Effect */
+  .case-study-card__card-glow {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    pointer-events: none;
+    z-index: 0;
+    transition: transform 0.5s ease;
+  }
+
+  .case-study-card:hover .case-study-card__card-glow {
+    transform: scale(1.3);
+  }
+
+  .case-study-card__card-glow--top-right {
+    top: -30px;
+    right: -30px;
+  }
+
+  .case-study-card__card-glow--bottom-right {
+    bottom: -30px;
+    right: -30px;
+  }
+
+  .case-study-card__card-glow--top-left {
+    top: -30px;
+    left: -30px;
+  }
+
+  .case-study-card__card-glow-orange {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: var(--color-orange-accent);
+    filter: blur(80px);
+    opacity: 0.5;
+    border-radius: 50%;
+    transition: opacity 0.5s ease, filter 0.5s ease;
+  }
+
+  .case-study-card:hover .case-study-card__card-glow-orange {
+    opacity: 0.7;
+    filter: blur(60px);
+  }
+
+  .case-study-card__card-glow-yellow {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: var(--color-orange-yellow);
+    filter: blur(40px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: filter 0.5s ease;
+  }
+
+  .case-study-card:hover .case-study-card__card-glow-yellow {
+    filter: blur(30px);
+  }
+
+  /* Full Image Type */
+  .case-study-card--fullImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .case-study-card__image-full {
+    position: absolute;
+    top: 28px;
+    left: 28px;
+    right: 28px;
+    bottom: 28px;
+    width: calc(100% - 56px);
+    height: calc(100% - 56px);
+  }
+
+  .case-study-card__bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .case-study-card:hover .case-study-card__bg-image {
+    transform: scale(1.05);
+  }
+
+  .case-study-card__overlay {
+    position: absolute;
+    bottom: -3%;
+    left: -3%;
+    width: 106%;
+    height: 80%;
+    background: linear-gradient(180deg, rgba(11, 11, 11, 0) 0%, rgba(11, 11, 11, 0.95) 100%);
+    transition: transform 0.5s ease;
+    transform-origin: center center;
+  }
+
+  .case-study-card:hover .case-study-card__overlay {
+    transform: scale(1.05);
+  }
+
+  .case-study-card__content-overlay {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 41px;
+  }
+
+  /* Split Layout Types */
+  .case-study-card--splitLayout,
+  .case-study-card--splitWithProgress {
+    display: flex;
+  }
+
+  .case-study-card__content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .case-study-card__title {
+    font-family: var(--font-manrope);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 120%;
+    color: var(--color-white);
+    margin: 0;
+    max-width: 468px;
+    transition: text-shadow 0.3s ease;
+  }
+
+  .case-study-card:hover .case-study-card__title {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+  }
+
+  .case-study-card--splitLayout .case-study-card__title,
+  .case-study-card--splitWithProgress .case-study-card__title {
+    max-width: 380px;
+  }
+
+  .case-study-card__description {
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--color-white);
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+
+  .case-study-card:hover .case-study-card__description {
+    color: var(--color-gray-light);
+  }
+
+  .case-study-card--splitLayout .case-study-card__description,
+  .case-study-card--splitWithProgress .case-study-card__description {
+    color: var(--color-gray-medium);
+    max-width: 400px;
+  }
+
+  .case-study-card--splitLayout:hover .case-study-card__description,
+  .case-study-card--splitWithProgress:hover .case-study-card__description {
+    color: var(--color-gray-light);
+  }
+
+  /* Stats */
+  .case-study-card__stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: auto;
+  }
+
+  .case-study-card__stat {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: default;
+    transition: transform 0.3s ease;
+  }
+
+  .case-study-card__stat:hover {
+    transform: translateX(5px);
+  }
+
+  .case-study-card__stat-number {
+    font-family: var(--font-poppins);
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--color-orange-primary);
+    min-width: 50px;
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+  }
+
+  .case-study-card__stat:hover .case-study-card__stat-number {
+    text-shadow: 0 0 25px rgba(250, 117, 35, 0.5);
+    color: var(--color-orange-light);
+  }
+
+  .case-study-card__stat-label {
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--color-white);
+    max-width: 130px;
+    transition: text-shadow 0.3s ease;
+  }
+
+  .case-study-card__stat:hover .case-study-card__stat-label {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  }
+
+  /* Progress Bar */
+  .case-study-card__progress {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: auto;
+  }
+
+  .case-study-card__progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .case-study-card__progress-label {
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-white);
+    transition: text-shadow 0.3s ease;
+  }
+
+  .case-study-card:hover .case-study-card__progress-label {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  }
+
+  .case-study-card__progress-percentage {
+    font-family: var(--font-poppins);
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--color-orange-primary);
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+  }
+
+  .case-study-card:hover .case-study-card__progress-percentage {
+    text-shadow: 0 0 25px rgba(250, 117, 35, 0.5);
+    color: var(--color-orange-light);
+  }
+
+  .case-study-card__progress-bar {
+    width: 100%;
+    max-width: 400px;
+    height: 7px;
+    background: #161616;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .case-study-card:hover .case-study-card__progress-bar {
+    box-shadow: 0 0 10px rgba(241, 75, 0, 0.2);
+  }
+
+  .case-study-card__progress-fill {
+    height: 100%;
+    background: var(--color-orange-primary);
+    transition: width 1s ease, box-shadow 0.3s ease;
+  }
+
+  .case-study-card:hover .case-study-card__progress-fill {
+    box-shadow: 0 0 15px rgba(250, 117, 35, 0.5);
+  }
+
+  /* Vertical Image */
+  .case-study-card__image-vertical {
+    position: relative;
+    width: 240px;
+    flex-shrink: 0;
+    overflow: visible;
+  }
+
+  .case-study-card__vertical-image {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    bottom: 28px;
+    left: 0;
+    width: calc(100% - 28px);
+    height: calc(100% - 56px);
+    object-fit: cover;
+    z-index: 2;
+    transition: transform 0.5s ease;
+  }
+
+  .case-study-card:hover .case-study-card__vertical-image {
+    transform: scale(1.05);
+  }
+
+  .case-study-card__vertical-overlay {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    bottom: 28px;
+    left: 0;
+    width: calc(100% - 28px);
+    height: calc(100% - 56px);
+    background: linear-gradient(90deg, rgba(11, 11, 11, 0.6) 0%, rgba(11, 11, 11, 0) 60%);
+    pointer-events: none;
+    z-index: 3;
+    transition: transform 0.5s ease;
+    transform-origin: center center;
+  }
+
+  .case-study-card:hover .case-study-card__vertical-overlay {
+    transform: scale(1.05);
+  }
+
+  /* Corner SVGs */
+  .case-study-card__corner {
+    position: absolute;
+    width: 43px;
+    height: 40px;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .case-study-card:hover .case-study-card__corner {
+    opacity: 1;
+  }
+
+  .case-study-card:hover .case-study-card__corner--top-left {
+    transform: translate(-3px, -3px);
+  }
+
+  .case-study-card:hover .case-study-card__corner--top-right {
+    transform: translate(3px, -3px);
+  }
+
+  .case-study-card:hover .case-study-card__corner--bottom-left {
+    transform: translate(-3px, 3px);
+  }
+
+  .case-study-card:hover .case-study-card__corner--bottom-right {
+    transform: translate(3px, 3px);
+  }
+
+  /* fullImage corners - centered on image corners */
+  .case-study-card__image-full .case-study-card__corner--top-left {
+    top: -20px;
+    left: -21.5px;
+  }
+
+  .case-study-card__image-full .case-study-card__corner--top-right {
+    top: -20px;
+    right: -21.5px;
+  }
+
+  .case-study-card__image-full .case-study-card__corner--bottom-left {
+    bottom: -20px;
+    left: -21.5px;
+  }
+
+  .case-study-card__image-full .case-study-card__corner--bottom-right {
+    bottom: -20px;
+    right: -21.5px;
+  }
+
+  /* vertical image corners - centered on image corners (28px inset) */
+  .case-study-card__image-vertical .case-study-card__corner--top-left {
+    top: 8px;
+    left: -21.5px;
+  }
+
+  .case-study-card__image-vertical .case-study-card__corner--top-right {
+    top: 8px;
+    right: 6.5px;
+  }
+
+  .case-study-card__image-vertical .case-study-card__corner--bottom-left {
+    bottom: 8px;
+    left: -21.5px;
+  }
+
+  .case-study-card__image-vertical .case-study-card__corner--bottom-right {
+    bottom: 8px;
+    right: 6.5px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .case-study-card {
+      height: auto;
+      min-height: 400px;
+    }
+
+    .case-study-card--splitLayout,
+    .case-study-card--splitWithProgress {
+      flex-direction: column;
+    }
+
+    .case-study-card__content {
+      padding: 30px 20px;
+      text-align: center;
+      align-items: center;
+    }
+
+    .case-study-card__image-vertical {
+      width: 100%;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .case-study-card__vertical-image {
+      position: relative;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 90%;
+      max-width: 350px;
+      height: 250px;
+      margin: 0 auto;
+      object-fit: cover;
+    }
+
+    .case-study-card__vertical-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 350px;
+      height: 250px;
+    }
+
+    .case-study-card:hover .case-study-card__vertical-overlay {
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    .case-study-card__title {
+      font-size: 22px;
+      max-width: 100% !important;
+      text-align: center;
+    }
+
+    .case-study-card__description {
+      font-size: 15px;
+      line-height: 22px;
+      max-width: 100% !important;
+      text-align: center;
+    }
+
+    .case-study-card__stats {
+      flex-direction: row;
+      gap: 20px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .case-study-card__stat {
+      text-align: center;
+      align-items: center;
+      flex: 0 0 auto;
+    }
+
+    .case-study-card__stat-number {
+      font-size: 28px;
+      min-width: auto;
+    }
+
+    .case-study-card__stat-label {
+      font-size: 14px;
+      line-height: 18px;
+      max-width: 120px;
+    }
+
+    .case-study-card__progress {
+      align-items: center;
+    }
+
+    .case-study-card__progress-header {
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .case-study-card__progress-label {
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .case-study-card__progress-percentage {
+      font-size: 28px;
+    }
+
+    .case-study-card__progress-bar {
+      width: 100%;
+      max-width: 321px;
+      margin: 0 auto;
+    }
+
+    .case-study-card__corner {
+      display: none;
+    }
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .case-study-card,
+    .case-study-card__card-glow,
+    .case-study-card__card-glow-orange,
+    .case-study-card__card-glow-yellow,
+    .case-study-card__bg-image,
+    .case-study-card__overlay,
+    .case-study-card__vertical-overlay,
+    .case-study-card__title,
+    .case-study-card__description,
+    .case-study-card__stat,
+    .case-study-card__stat-number,
+    .case-study-card__stat-label,
+    .case-study-card__progress-label,
+    .case-study-card__progress-percentage,
+    .case-study-card__progress-bar,
+    .case-study-card__progress-fill,
+    .case-study-card__vertical-image,
+    .case-study-card__corner {
+      transition: none;
+    }
+  }
+</style>

@@ -1,0 +1,357 @@
+---
+import CaseStudyCard from './CaseStudyCard.astro';
+
+const caseStudies = [
+  {
+    type: 'fullImage' as const,
+    title: 'Commercial Foundation Stabilization at Corona Millworks',
+    description: 'High-traffic manufacturing facility with slab deflection and trip hazards. Rapid-curing polymer injection restored safety compliance with zero downtime.',
+    imageSrc: '/images/stratalock-case-study-3.webp',
+    imageAlt: 'Commercial foundation stabilization at Corona Millworks',
+    glowPosition: 'top-right' as const
+  },
+  {
+    type: 'splitLayout' as const,
+    title: 'Foundation Stabilization for Apartment Complex',
+    description: 'Multi-unit property experiencing uneven settling from poor soil compaction beneath slab.',
+    imageSrc: '/images/stratalock-case-study-1.webp',
+    imageAlt: 'Apartment complex foundation work',
+    stats: [
+      { number: '0', label: 'Days Tenant Disruption' },
+      { number: '24', label: 'Hours Project Completion' }
+    ]
+  },
+  {
+    type: 'splitWithProgress' as const,
+    title: 'Foundation Stabilization for Layne Construction Office',
+    description: 'Ongoing floor settlement near entry points corrected with precision deep injection completed after business hours.',
+    imageSrc: '/images/stratalock-case-study-4.webp',
+    imageAlt: 'Layne Construction office foundation repair',
+    progressBar: {
+      label: 'Faster than traditional piers',
+      percentage: '80%',
+      fillWidth: '85%'
+    },
+    glowPosition: 'bottom-right' as const,
+    hideCorners: true
+  },
+  {
+    type: 'fullImage' as const,
+    title: 'Residential Foundation Repair for Settling Home',
+    description: 'Single-family residence with structural shift causing wall cracks and sloped floors. Targeted injection beneath footing permanently corrected settlement with minimal excavation.',
+    imageSrc: '/images/stratalock-case-study-2.webp',
+    imageAlt: 'Residential foundation repair work',
+    glowPosition: 'top-left' as const
+  }
+];
+---
+
+<section class="case-studies">
+  <div class="case-studies__container">
+    <!-- Section Header -->
+    <div class="case-studies__header">
+      <div class="case-studies__tagline scroll-animate">
+        <span class="case-studies__tagline-icon"></span>
+        <span class="case-studies__tagline-text">CASE STUDIES</span>
+      </div>
+
+      <h2 class="case-studies__headline scroll-animate scroll-animate--delay-1">
+        <span class="case-studies__headline--highlight">Real projects. Real results.</span> Proven solutions across every sector.
+      </h2>
+    </div>
+
+    <!-- Case Study Grid -->
+    <div class="case-studies__grid">
+      {caseStudies.map((study, index) => (
+        <div class={`case-studies__card-wrapper scroll-animate scroll-animate--delay-${index + 2}`}>
+          <CaseStudyCard
+            type={study.type}
+            title={study.title}
+            description={study.description}
+            imageSrc={study.imageSrc}
+            imageAlt={study.imageAlt}
+            stats={study.stats}
+            progressBar={study.progressBar}
+            glowPosition={study.glowPosition}
+            hideCorners={study.hideCorners}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .case-studies {
+    background: var(--color-bg-dark-1);
+    padding: 100px 0;
+  }
+
+  .case-studies__container {
+    max-width: 1452px;
+    margin: 0 auto;
+    padding: 0 90px;
+  }
+
+  /* Header */
+  .case-studies__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .case-studies__tagline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    cursor: default;
+  }
+
+  .case-studies__tagline-icon {
+    width: 11px;
+    height: 11px;
+    background: var(--color-orange-primary);
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .case-studies__tagline:hover .case-studies__tagline-icon {
+    transform: rotate(45deg) scale(1.2);
+    box-shadow: 0 0 15px rgba(250, 117, 35, 0.5);
+  }
+
+  .case-studies__tagline-text {
+    font-family: var(--font-manrope);
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--color-white);
+    letter-spacing: 0.5px;
+    transition: letter-spacing 0.3s ease;
+  }
+
+  .case-studies__tagline:hover .case-studies__tagline-text {
+    letter-spacing: 2px;
+  }
+
+  .case-studies__headline {
+    font-family: var(--font-manrope);
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 120%;
+    color: var(--color-gray-medium);
+    margin: 0;
+    max-width: 918px;
+  }
+
+  .case-studies__headline--highlight {
+    color: var(--color-white);
+    position: relative;
+    display: inline;
+    background-image: linear-gradient(90deg, var(--color-orange-primary), var(--color-orange-light));
+    background-size: 0% 3px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: color 0.3s ease, background-size 0.4s ease;
+  }
+
+  .case-studies__headline--highlight:hover {
+    color: var(--color-orange-light);
+    background-size: 100% 3px;
+  }
+
+  /* Grid */
+  .case-studies__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* Responsive */
+  @media (max-width: 1500px) {
+    .case-studies__container {
+      padding: 0 60px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .case-studies__container {
+      padding: 0 40px;
+    }
+
+    .case-studies__headline {
+      font-size: 36px;
+    }
+
+    .case-studies__grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .case-studies {
+      padding: 60px 0;
+    }
+
+    .case-studies__container {
+      padding: 0 20px;
+    }
+
+    .case-studies__headline {
+      font-size: 28px;
+    }
+
+    .case-studies__header {
+      margin-bottom: 40px;
+    }
+  }
+
+  /* Card Wrapper */
+  .case-studies__card-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Scroll Animations */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-animate--delay-1 {
+    transition-delay: 0.1s;
+  }
+
+  .scroll-animate--delay-2 {
+    transition-delay: 0.15s;
+  }
+
+  .scroll-animate--delay-3 {
+    transition-delay: 0.25s;
+  }
+
+  .scroll-animate--delay-4 {
+    transition-delay: 0.35s;
+  }
+
+  .scroll-animate--delay-5 {
+    transition-delay: 0.45s;
+  }
+
+  .scroll-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-animate {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .case-studies__tagline-icon,
+    .case-studies__tagline-text,
+    .case-studies__headline--highlight {
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    var caseStudiesAnimationsInitialized = false;
+    var caseStudiesObserver = null;
+
+    function initCaseStudiesAnimations() {
+      var elements = document.querySelectorAll('.case-studies .scroll-animate');
+      if (elements.length === 0) return;
+
+      // Check if element is in viewport
+      function isInViewport(el) {
+        var rect = el.getBoundingClientRect();
+        var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        return rect.top < windowHeight && rect.bottom > 0;
+      }
+
+      // Cleanup previous observer if exists
+      if (caseStudiesObserver) {
+        caseStudiesObserver.disconnect();
+      }
+
+      var observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -30px 0px',
+        threshold: 0.05
+      };
+
+      caseStudiesObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            caseStudiesObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      elements.forEach(function(el) {
+        if (!el.classList.contains('is-visible')) {
+          if (isInViewport(el)) {
+            setTimeout(function() {
+              el.classList.add('is-visible');
+            }, 50);
+          } else {
+            caseStudiesObserver.observe(el);
+          }
+        }
+      });
+
+      caseStudiesAnimationsInitialized = true;
+    }
+
+    function runInit() {
+      requestAnimationFrame(function() {
+        requestAnimationFrame(initCaseStudiesAnimations);
+      });
+    }
+
+    // Run on DOMContentLoaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', runInit);
+    } else {
+      runInit();
+    }
+
+    // Fallback: also run on window load
+    window.addEventListener('load', function() {
+      if (!caseStudiesAnimationsInitialized) {
+        runInit();
+      }
+    });
+
+    // Also run on Astro page load (for view transitions)
+    document.addEventListener('astro:page-load', function() {
+      caseStudiesAnimationsInitialized = false;
+      runInit();
+    });
+
+    // Scroll fallback - check elements on scroll
+    window.addEventListener('scroll', function() {
+      if (!caseStudiesAnimationsInitialized) return;
+
+      var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      document.querySelectorAll('.case-studies .scroll-animate:not(.is-visible)').forEach(function(el) {
+        var rect = el.getBoundingClientRect();
+        if (rect.top < windowHeight && rect.bottom > 0) {
+          el.classList.add('is-visible');
+        }
+      });
+    }, { passive: true });
+  })();
+</script>

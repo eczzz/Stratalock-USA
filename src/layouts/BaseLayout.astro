@@ -1,0 +1,82 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = 'Stratalock - Foundation Repair Experts' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Manrope:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <slot />
+</body>
+</html>
+
+<style is:global>
+  :root {
+    /* Colors */
+    --color-orange-primary: #F14B00;
+    --color-orange-accent: #FF3B00;
+    --color-orange-light: #FA7523;
+    --color-orange-yellow: #FF9D00;
+    --color-orange-gradient-1: #FFA982;
+    --color-orange-gradient-2: #FFA177;
+    --color-orange-dark: #932E00;
+
+    --color-bg-dark-1: #0B0B0B;
+    --color-bg-dark-2: #161616;
+
+    --color-white: #FFFFFF;
+    --color-gray-light: #A2A2A2;
+    --color-gray-medium: #7C7C7C;
+    --color-gray-dark: #525252;
+
+    --color-purple-glow: #EB9EFF;
+
+    /* Typography */
+    --font-poppins: 'Poppins', sans-serif;
+    --font-manrope: 'Manrope', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+
+    /* Container */
+    --container-max-width: 1512px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-poppins);
+    color: var(--color-white);
+    background: linear-gradient(270deg, var(--color-bg-dark-1) 58.76%, var(--color-bg-dark-2) 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+</style>

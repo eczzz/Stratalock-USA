@@ -1,0 +1,286 @@
+---
+import TestimonialCard from './TestimonialCard.astro';
+
+const testimonials = [
+  {
+    serviceType: 'Foundation Repair',
+    testimonialText: "While other companies were pushing a much more expensive repair approach, Joel pragmatically proposed a lower-cost alternative that was appropriate and sufficient for my home's needs.",
+    authorName: 'Amit B.',
+    authorLocation: 'Happy AZ Client',
+    imageSrc: '/images/amit-testimonial-1.webp',
+    imageAlt: 'Foundation repair worker at site',
+    width: '637px'
+  },
+  {
+    serviceType: 'Concrete Leveling',
+    testimonialText: 'I was so impressed I hired StrataLock on the spot. I was not disappointed with the work provided. They really know their business.',
+    authorName: 'Lynn S.',
+    authorLocation: 'Happy AZ Client',
+    width: '323px'
+  },
+  {
+    serviceType: 'Structural Stabilization',
+    testimonialText: 'We are so grateful for their help and would recommend them to anyone in need of foundation repair or structural stabilization.',
+    authorName: 'Linda M.',
+    authorLocation: 'Happy IL Client',
+    width: '313px'
+  }
+];
+---
+
+<section class="testimonials">
+  <div class="testimonials__container">
+    <!-- Section Header -->
+    <div class="testimonials__header">
+      <div class="testimonials__header-left scroll-animate">
+        <div class="testimonials__tagline">
+          <span class="testimonials__tagline-icon"></span>
+          <span class="testimonials__tagline-text">TESTIMONIALS</span>
+        </div>
+      </div>
+
+      <div class="testimonials__header-right scroll-animate scroll-animate--delay-1">
+        <h2 class="testimonials__headline">
+          Trusted by <span class="testimonials__headline--highlight">homeowners and businesses</span> across the country.
+        </h2>
+      </div>
+    </div>
+
+    <!-- Testimonial Cards -->
+    <div class="testimonials__cards">
+      {testimonials.map((testimonial, index) => (
+        <div class={`testimonials__card-wrapper scroll-animate scroll-animate--delay-${index + 2}`}>
+          <TestimonialCard
+            serviceType={testimonial.serviceType}
+            testimonialText={testimonial.testimonialText}
+            authorName={testimonial.authorName}
+            authorLocation={testimonial.authorLocation}
+            imageSrc={testimonial.imageSrc}
+            imageAlt={testimonial.imageAlt}
+            width={testimonial.width}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background: var(--color-bg-dark-1);
+    padding: 100px 0;
+  }
+
+  .testimonials__container {
+    max-width: 1273px;
+    margin: 0 auto;
+    padding: 0 120px;
+  }
+
+  /* Header */
+  .testimonials__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    margin-bottom: 80px;
+  }
+
+  .testimonials__header-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonials__tagline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .testimonials__tagline-icon {
+    width: 11px;
+    height: 11px;
+    background: var(--color-orange-primary);
+    flex-shrink: 0;
+  }
+
+  .testimonials__tagline-text {
+    font-family: var(--font-manrope);
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--color-white);
+    letter-spacing: 0.5px;
+  }
+
+  .testimonials__header-right {
+    flex: 1;
+    max-width: 727px;
+  }
+
+  .testimonials__headline {
+    font-family: var(--font-manrope);
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 120%;
+    color: var(--color-gray-medium);
+    margin: 0;
+  }
+
+  .testimonials__headline--highlight {
+    color: var(--color-white);
+  }
+
+  /* Cards */
+  .testimonials__cards {
+    display: flex;
+    gap: 0;
+  }
+
+  .testimonials__card-wrapper {
+    display: flex;
+    height: 100%;
+  }
+
+  /* Scroll Animations */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-animate--delay-1 {
+    transition-delay: 0.1s;
+  }
+
+  .scroll-animate--delay-2 {
+    transition-delay: 0.2s;
+  }
+
+  .scroll-animate--delay-3 {
+    transition-delay: 0.3s;
+  }
+
+  .scroll-animate--delay-4 {
+    transition-delay: 0.4s;
+  }
+
+  .scroll-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive */
+  @media (max-width: 1400px) {
+    .testimonials__container {
+      padding: 0 60px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .testimonials__container {
+      padding: 0 40px;
+    }
+
+    .testimonials__header {
+      flex-direction: column;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .testimonials__headline {
+      font-size: 36px;
+    }
+
+    .testimonials__cards {
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .testimonials {
+      padding: 60px 0;
+    }
+
+    .testimonials__container {
+      padding: 0 20px;
+    }
+
+    .testimonials__headline {
+      font-size: 28px;
+    }
+
+    .testimonials__header {
+      margin-bottom: 40px;
+    }
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-animate {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    function initTestimonialsAnimations() {
+      var elements = document.querySelectorAll('.testimonials .scroll-animate');
+      if (elements.length === 0) return;
+
+      // Check if element is in viewport
+      function isInViewport(el) {
+        var rect = el.getBoundingClientRect();
+        return (
+          rect.top < (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.bottom > 0
+        );
+      }
+
+      var observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1
+      };
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      elements.forEach(function(el) {
+        // If already in viewport, add visible class immediately
+        if (isInViewport(el)) {
+          el.classList.add('is-visible');
+        } else {
+          observer.observe(el);
+        }
+      });
+    }
+
+    function runInit() {
+      requestAnimationFrame(function() {
+        requestAnimationFrame(initTestimonialsAnimations);
+      });
+    }
+
+    // Run on DOMContentLoaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', runInit);
+    } else {
+      runInit();
+    }
+
+    // Also run on Astro page load (for view transitions)
+    document.addEventListener('astro:page-load', runInit);
+  })();
+</script>

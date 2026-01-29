@@ -1,0 +1,637 @@
+---
+import Button from './Button.astro';
+
+const navItems = [
+  { name: 'Home', href: '/', active: true },
+  { name: 'About', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Service Areas', href: '/service-areas' },
+  { name: 'Process', href: '/process' },
+  { name: 'Contact', href: '/contact' }
+];
+---
+
+<header class="header">
+  <div class="header__glow-container">
+    <div class="header__glow header__glow--orange"></div>
+    <div class="header__glow header__glow--yellow"></div>
+  </div>
+
+  <div class="header__container">
+    <a href="/" class="header__logo">
+      <img src="/images/Stratalock-USA-Logo.webp" alt="Stratalock" />
+    </a>
+
+    <nav class="header__nav">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class={`header__nav-item ${item.active ? 'header__nav-item--active' : ''}`}
+        >
+          {item.name}
+        </a>
+      ))}
+    </nav>
+
+    <div class="header__cta header__cta--flash">
+      <Button text="Free Estimate" size="small" href="/estimate" />
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="header__mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+      <span class="header__mobile-toggle-line"></span>
+      <span class="header__mobile-toggle-line"></span>
+      <span class="header__mobile-toggle-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="header__mobile-menu">
+    <div class="header__mobile-menu-content">
+      <div class="header__mobile-menu-glow-container">
+        <div class="header__mobile-menu-glow header__mobile-menu-glow--orange"></div>
+        <div class="header__mobile-menu-glow header__mobile-menu-glow--yellow"></div>
+      </div>
+
+      <nav class="header__mobile-nav">
+        {navItems.map((item, index) => (
+          <a
+            href={item.href}
+            class={`header__mobile-nav-item ${item.active ? 'header__mobile-nav-item--active' : ''}`}
+            style={`animation-delay: ${0.1 + index * 0.05}s;`}
+          >
+            {item.name}
+          </a>
+        ))}
+      </nav>
+
+      <div class="header__mobile-cta">
+        <Button text="Free Estimate" size="large" href="/estimate" />
+      </div>
+
+      <div class="header__mobile-phone">
+        <svg class="header__mobile-phone-icon" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 0.5V18.5M1 9.5H19" stroke="white" stroke-width="1.5"/>
+        </svg>
+        <span class="header__mobile-phone-text">
+          Call: <a href="tel:8558505625" class="header__mobile-phone-number">(855) 850-5625</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: relative;
+    z-index: 100;
+    background: linear-gradient(270deg, var(--color-bg-dark-1) 58.76%, var(--color-bg-dark-2) 100%);
+  }
+
+  .header__glow-container {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 320px;
+    height: 320px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .header__glow {
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .header__glow--orange {
+    width: 320px;
+    height: 320px;
+    background: var(--color-orange-accent);
+    filter: blur(176px);
+    opacity: 0.85;
+  }
+
+  .header__glow--yellow {
+    width: 180px;
+    height: 180px;
+    background: var(--color-orange-yellow);
+    filter: blur(75px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .header__container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 48px 64px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .header__logo img {
+    width: 185px;
+    height: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  .header__logo:hover img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 10px rgba(250, 117, 35, 0.3));
+  }
+
+  .header__nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .header__nav-item {
+    font-family: var(--font-poppins);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-white);
+    padding-bottom: 4px;
+    border-bottom: 4px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+
+  .header__nav-item:hover {
+    border-bottom-color: rgba(250, 117, 35, 0.5);
+    color: var(--color-orange-light);
+  }
+
+  .header__nav-item--active {
+    border-bottom-color: var(--color-orange-light);
+  }
+
+  /* Mobile Menu Toggle */
+  .header__mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+  }
+
+  .header__mobile-toggle:hover {
+    transform: scale(1.1);
+  }
+
+  .header__mobile-toggle-line {
+    width: 100%;
+    height: 3px;
+    background: var(--color-white);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .header__mobile-toggle:hover .header__mobile-toggle-line {
+    background: var(--color-orange-primary);
+    box-shadow: 0 0 10px rgba(250, 117, 35, 0.5);
+  }
+
+  .header__mobile-toggle.is-active .header__mobile-toggle-line:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+  }
+
+  .header__mobile-toggle.is-active .header__mobile-toggle-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .header__mobile-toggle.is-active .header__mobile-toggle-line:nth-child(3) {
+    transform: translateY(-10.5px) rotate(-45deg);
+  }
+
+  /* Mobile Menu Overlay */
+  .header__mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(11, 11, 11, 0.98);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                opacity 0.5s ease,
+                visibility 0.5s ease;
+    overflow-y: auto;
+  }
+
+  .header__mobile-menu.is-open {
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .header__mobile-menu-content {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 120px 40px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  /* Glow Effects */
+  .header__mobile-menu-glow-container {
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 200px;
+    height: 200px;
+    pointer-events: none;
+    z-index: 0;
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+  }
+
+  .header__mobile-menu-glow {
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .header__mobile-menu-glow--orange {
+    width: 200px;
+    height: 200px;
+    background: var(--color-orange-accent);
+    filter: blur(100px);
+    opacity: 0.5;
+  }
+
+  .header__mobile-menu-glow--yellow {
+    width: 120px;
+    height: 120px;
+    background: var(--color-orange-yellow);
+    filter: blur(50px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.4;
+  }
+
+  /* Mobile Navigation */
+  .header__mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header__mobile-nav-item {
+    font-family: var(--font-manrope);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 120%;
+    color: var(--color-white);
+    padding: 20px 30px;
+    display: block;
+    border-left: 4px solid transparent;
+    background: linear-gradient(90deg, rgba(250, 117, 35, 0) 0%, rgba(250, 117, 35, 0) 100%);
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slide-in 0.6s ease forwards;
+  }
+
+  @keyframes slide-in {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .header__mobile-nav-item:hover {
+    border-left-color: var(--color-orange-primary);
+    background: linear-gradient(90deg, rgba(250, 117, 35, 0.1) 0%, rgba(250, 117, 35, 0) 100%);
+    color: var(--color-orange-light);
+    transform: translateX(10px);
+  }
+
+  .header__mobile-nav-item--active {
+    border-left-color: var(--color-orange-light);
+    color: var(--color-orange-light);
+  }
+
+  /* Mobile CTA */
+  .header__mobile-cta {
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fade-in-up 0.6s ease forwards 0.5s;
+  }
+
+  @keyframes fade-in-up {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile Phone */
+  .header__mobile-phone {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fade-in-up 0.6s ease forwards 0.6s;
+    transition: transform 0.3s ease;
+  }
+
+  .header__mobile-phone:hover {
+    transform: translateY(0) translateX(4px);
+  }
+
+  .header__mobile-phone-icon {
+    flex-shrink: 0;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  .header__mobile-phone:hover .header__mobile-phone-icon {
+    transform: rotate(90deg);
+    filter: drop-shadow(0 0 8px rgba(250, 117, 35, 0.5));
+  }
+
+  .header__mobile-phone-icon path {
+    transition: stroke 0.3s ease;
+  }
+
+  .header__mobile-phone:hover .header__mobile-phone-icon path {
+    stroke: var(--color-orange-primary);
+  }
+
+  .header__mobile-phone-text {
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-gray-medium);
+    transition: color 0.3s ease;
+  }
+
+  .header__mobile-phone:hover .header__mobile-phone-text {
+    color: var(--color-white);
+  }
+
+  .header__mobile-phone-number {
+    color: var(--color-white);
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  .header__mobile-phone-number:hover {
+    color: var(--color-orange-light);
+    text-shadow: 0 0 15px rgba(250, 117, 35, 0.3);
+  }
+
+  @media (max-width: 1024px) {
+    .header__container {
+      flex-direction: row;
+      padding: 24px 32px 0;
+      justify-content: space-between;
+    }
+
+    .header__nav,
+    .header__cta {
+      display: none;
+    }
+
+    .header__mobile-toggle {
+      display: flex;
+    }
+
+    .header__logo img {
+      width: 140px;
+    }
+
+    .header__glow-container {
+      width: 250px;
+      height: 250px;
+    }
+
+    .header__glow--orange {
+      width: 250px;
+      height: 250px;
+      filter: blur(120px);
+    }
+
+    .header__glow--yellow {
+      width: 150px;
+      height: 150px;
+      filter: blur(60px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header__container {
+      padding: 24px 20px 0;
+    }
+
+    .header__glow-container {
+      width: 180px;
+      height: 180px;
+      top: 0;
+      left: 0;
+    }
+
+    .header__glow--orange {
+      width: 180px;
+      height: 180px;
+      filter: blur(100px);
+      opacity: 0.8;
+    }
+
+    .header__glow--yellow {
+      width: 120px;
+      height: 120px;
+      filter: blur(50px);
+      opacity: 0.8;
+    }
+  }
+
+  /* Flash animation for CTA button */
+  .header__cta--flash {
+    position: relative;
+  }
+
+  .header__cta--flash :global(.button) {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header__cta--flash :global(.button)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transform: skewX(-25deg);
+    animation: flash-shine 3s ease-in-out infinite;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  @keyframes flash-shine {
+    0% {
+      left: -100%;
+    }
+    20% {
+      left: 150%;
+    }
+    100% {
+      left: 150%;
+    }
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .header__logo img,
+    .header__nav-item,
+    .header__mobile-toggle,
+    .header__mobile-toggle-line,
+    .header__mobile-menu,
+    .header__mobile-nav-item,
+    .header__mobile-phone,
+    .header__mobile-phone-icon,
+    .header__mobile-phone-icon path,
+    .header__mobile-phone-text,
+    .header__mobile-phone-number {
+      transition: none;
+      animation: none;
+    }
+
+    .header__mobile-menu-glow-container {
+      animation: none;
+    }
+
+    .header__mobile-nav-item,
+    .header__mobile-cta,
+    .header__mobile-phone {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    function initMobileMenu() {
+      var toggle = document.querySelector('.header__mobile-toggle');
+      var menu = document.querySelector('.header__mobile-menu');
+      var menuLinks = document.querySelectorAll('.header__mobile-nav-item');
+
+      if (!toggle || !menu) return;
+
+      // Toggle menu
+      function toggleMenu() {
+        var isOpen = menu.classList.contains('is-open');
+
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      }
+
+      function openMenu() {
+        menu.classList.add('is-open');
+        toggle.classList.add('is-active');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        menu.classList.remove('is-open');
+        toggle.classList.remove('is-active');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      // Click on toggle button
+      toggle.addEventListener('click', toggleMenu);
+
+      // Click on menu links
+      menuLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          closeMenu();
+        });
+      });
+
+      // Click outside menu
+      menu.addEventListener('click', function(e) {
+        if (e.target === menu) {
+          closeMenu();
+        }
+      });
+
+      // ESC key to close
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          closeMenu();
+        }
+      });
+
+      // Close menu on window resize if open and screen becomes large
+      var resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+          if (window.innerWidth > 1024 && menu.classList.contains('is-open')) {
+            closeMenu();
+          }
+        }, 250);
+      });
+    }
+
+    // Run on DOMContentLoaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMobileMenu);
+    } else {
+      initMobileMenu();
+    }
+
+    // Also run on Astro page load (for view transitions)
+    document.addEventListener('astro:page-load', initMobileMenu);
+  })();
+</script>
