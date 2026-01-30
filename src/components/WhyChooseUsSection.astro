@@ -498,19 +498,46 @@ const icons: Record<IconKey, { path: string; viewBox: string }> = {
     }
   }
 
-  @media (max-width: 1024px) {
-    .why-choose-us__container {
-      padding: 0 40px;
-    }
-
+  @media (max-width: 1300px) {
     .why-choose-us__header {
-      flex-direction: column;
       gap: 40px;
-      margin-bottom: 40px;
     }
 
     .why-choose-us__headline {
-      font-size: 36px;
+      width: 100%;
+      max-width: 600px;
+      font-size: 40px;
+    }
+
+    .why-choose-us__header-right {
+      gap: 40px;
+      flex-shrink: 0;
+    }
+
+    .why-choose-us__stat-number {
+      font-size: 30px;
+    }
+
+    .why-choose-us__stat-label {
+      font-size: 14px;
+      max-width: 120px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .why-choose-us__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+    }
+
+    .why-choose-us__headline {
+      max-width: 100%;
+    }
+
+    .why-choose-us__header-right {
+      width: 100%;
+      justify-content: flex-start;
     }
 
     .why-choose-us__content {
@@ -518,13 +545,20 @@ const icons: Record<IconKey, { path: string; viewBox: string }> = {
     }
 
     .why-choose-us__features {
-      border-right: 1px solid #525252;
+      min-width: 0;
+      width: 100%;
+      height: auto;
       padding: 50px 40px;
       gap: 50px;
     }
 
     .why-choose-us__features-fade {
       display: none;
+    }
+
+    .why-choose-us__feature:nth-child(3),
+    .why-choose-us__feature:nth-child(5) {
+      margin-left: 40px;
     }
 
     .why-choose-us__image-container {
@@ -536,6 +570,25 @@ const icons: Record<IconKey, { path: string; viewBox: string }> = {
       right: 50%;
       top: -50px;
       transform: translateX(50%);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .why-choose-us__container {
+      padding: 0 40px;
+    }
+
+    .why-choose-us__header {
+      margin-bottom: 40px;
+    }
+
+    .why-choose-us__headline {
+      font-size: 36px;
+    }
+
+    .why-choose-us__feature:nth-child(3),
+    .why-choose-us__feature:nth-child(5) {
+      margin-left: 20px;
     }
   }
 

@@ -252,7 +252,7 @@ const hasImage = !!imageSrc;
   }
 
   /* Responsive */
-  @media (max-width: 1024px) {
+  @media (max-width: 1200px) {
     .testimonial-card {
       width: 100% !important;
       flex: 1 1 auto !important;
@@ -288,6 +288,12 @@ const hasImage = !!imageSrc;
       height: auto;
       max-height: 320px;
       object-fit: cover;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .testimonial-card {
+      max-width: 100%;
     }
   }
 

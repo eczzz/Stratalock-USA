@@ -90,12 +90,13 @@ const navItems = [
 
   .header__glow-container {
     position: absolute;
-    top: -50px;
-    left: -50px;
+    top: 0;
+    left: 0;
     width: 320px;
     height: 320px;
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
+    transform: translate(-50%, -50%);
   }
 
   .header__glow {
@@ -124,7 +125,7 @@ const navItems = [
   .header__container {
     max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: 48px 64px 0;
+    padding: 12px 64px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -230,7 +231,7 @@ const navItems = [
     transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
                 opacity 0.5s ease,
                 visibility 0.5s ease;
-    overflow-y: auto;
+    overflow: hidden;
   }
 
   .header__mobile-menu.is-open {

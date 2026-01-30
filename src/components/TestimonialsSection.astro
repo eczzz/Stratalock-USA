@@ -177,11 +177,7 @@ const testimonials = [
     }
   }
 
-  @media (max-width: 1024px) {
-    .testimonials__container {
-      padding: 0 40px;
-    }
-
+  @media (max-width: 1200px) {
     .testimonials__header {
       flex-direction: column;
       gap: 40px;
@@ -189,13 +185,23 @@ const testimonials = [
     }
 
     .testimonials__headline {
-      font-size: 36px;
+      font-size: 40px;
     }
 
     .testimonials__cards {
       flex-direction: column;
       gap: 30px;
       align-items: center;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .testimonials__container {
+      padding: 0 40px;
+    }
+
+    .testimonials__headline {
+      font-size: 36px;
     }
   }
 

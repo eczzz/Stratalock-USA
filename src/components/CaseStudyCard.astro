@@ -531,7 +531,7 @@ const { title, description, type, imageSrc, imageAlt, stats, progressBar, glowPo
     }
 
     .case-study-card__content {
-      padding: 30px 20px;
+      padding: 30px;
       text-align: center;
       align-items: center;
     }
@@ -589,12 +589,15 @@ const { title, description, type, imageSrc, imageAlt, stats, progressBar, glowPo
       gap: 20px;
       justify-content: center;
       width: 100%;
+      padding: 0 20px;
     }
 
     .case-study-card__stat {
+      flex-direction: column;
       text-align: center;
       align-items: center;
       flex: 0 0 auto;
+      gap: 8px;
     }
 
     .case-study-card__stat-number {
