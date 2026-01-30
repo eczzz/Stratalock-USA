@@ -118,9 +118,9 @@ const icons: Record<IconKey, { path: string; viewBox: string }> = {
   }
 
   .why-choose-us__container {
-    max-width: 1272px;
+    max-width: 1520px;
     margin: 0 auto;
-    padding: 0 120px;
+    padding: 0 100px;
   }
 
   /* Header */
@@ -488,6 +488,12 @@ const icons: Record<IconKey, { path: string; viewBox: string }> = {
   }
 
   /* Responsive */
+  @media (max-width: 1600px) {
+    .why-choose-us__container {
+      padding: 0 80px;
+    }
+  }
+
   @media (max-width: 1400px) {
     .why-choose-us__container {
       padding: 0 60px;
