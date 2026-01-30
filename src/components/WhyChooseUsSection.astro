@@ -740,6 +740,20 @@ const icons: Record<IconKey, { path: string; viewBox: string }> = {
     transform: translateY(0);
   }
 
+  /* Faster animations on mobile to prevent scroll blocking */
+  @media (max-width: 768px) {
+    .scroll-animate {
+      transform: translateY(20px);
+      transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    }
+
+    .scroll-animate--delay-1,
+    .scroll-animate--delay-2,
+    .scroll-animate--delay-3 {
+      transition-delay: 0s;
+    }
+  }
+
   /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
     .scroll-animate {

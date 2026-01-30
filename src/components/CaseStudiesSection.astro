@@ -248,6 +248,22 @@ const caseStudies = [
     transform: translateY(0);
   }
 
+  /* Faster animations on mobile to prevent scroll blocking */
+  @media (max-width: 768px) {
+    .scroll-animate {
+      transform: translateY(20px);
+      transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    }
+
+    .scroll-animate--delay-1,
+    .scroll-animate--delay-2,
+    .scroll-animate--delay-3,
+    .scroll-animate--delay-4,
+    .scroll-animate--delay-5 {
+      transition-delay: 0s;
+    }
+  }
+
   /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
     .scroll-animate {
@@ -341,17 +357,22 @@ const caseStudies = [
       runInit();
     });
 
-    // Scroll fallback - check elements on scroll
+    // Scroll fallback - check elements on scroll (throttled)
+    var caseStudiesScrollTimeout;
     window.addEventListener('scroll', function() {
-      if (!caseStudiesAnimationsInitialized) return;
-
-      var windowHeight = window.innerHeight || document.documentElement.clientHeight;
-      document.querySelectorAll('.case-studies .scroll-animate:not(.is-visible)').forEach(function(el) {
-        var rect = el.getBoundingClientRect();
-        if (rect.top < windowHeight && rect.bottom > 0) {
-          el.classList.add('is-visible');
-        }
-      });
+      if (!caseStudiesAnimationsInitialized || caseStudiesScrollTimeout) return;
+      caseStudiesScrollTimeout = setTimeout(function() {
+        caseStudiesScrollTimeout = null;
+        var elements = document.querySelectorAll('.case-studies .scroll-animate:not(.is-visible)');
+        if (elements.length === 0) return;
+        var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        elements.forEach(function(el) {
+          var rect = el.getBoundingClientRect();
+          if (rect.top < windowHeight && rect.bottom > 0) {
+            el.classList.add('is-visible');
+          }
+        });
+      }, 100);
     }, { passive: true });
   })();
 </script>
