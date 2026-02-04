@@ -1,0 +1,408 @@
+---
+const caseStudies = [
+  {
+    id: 1,
+    title: 'Commercial Warehouse Soil Stabilization in Austin, TX',
+    description: 'Stabilized foundation and eliminated ongoing settlement issues.',
+    image: '/images/stratalock-case-study-1.webp',
+    stats: [
+      { value: '1"', label: 'Lift Achieved' },
+      { value: '3', label: 'Foundation Piers Stabilized' }
+    ],
+    progress: 85
+  },
+  {
+    id: 2,
+    title: 'Residential Foundation Lift & Leveling in San Antonio, TX',
+    description: 'Restored structural integrity with minimal disruption to the homeowner.',
+    image: '/images/stratalock-case-study-2.webp',
+    stats: [
+      { value: '2"', label: 'Lift Achieved' },
+      { value: '6', label: 'Injection Points' }
+    ],
+    progress: 90
+  },
+  {
+    id: 3,
+    title: 'Parking Structure Repair in Dallas, TX',
+    description: 'Prevented costly demolition by stabilizing weak soil beneath the structure.',
+    image: '/images/stratalock-case-study-3.webp',
+    stats: [
+      { value: '4', label: 'Zones Stabilized' },
+      { value: '12', label: 'Injection Points' }
+    ],
+    progress: 78
+  },
+  {
+    id: 4,
+    title: 'Historic Building Preservation in Houston, TX',
+    description: 'Preserved a century-old structure using advanced polymer injection.',
+    image: '/images/stratalock-case-study-4.webp',
+    stats: [
+      { value: '0.5"', label: 'Settlement Corrected' },
+      { value: '8', label: 'Injection Points' }
+    ],
+    progress: 92
+  }
+];
+---
+
+<section class="case-studies">
+  <div class="case-studies__container">
+    <!-- Header -->
+    <div class="case-studies__header">
+      <div class="case-studies__label">
+        <span class="case-studies__label-icon"></span>
+        <span class="case-studies__label-text">Case Studies</span>
+      </div>
+
+      <h2 class="case-studies__headline">
+        Real Projects. Real Results.<br>Real Impact on Communities.
+      </h2>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="case-studies__grid">
+      {caseStudies.map((study) => (
+        <article class="case-studies__card">
+          <!-- Corner Crosshairs -->
+          <svg class="case-studies__crosshair case-studies__crosshair--top-left" width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.4909 25.477V38.798M21.4909 0.5V13.821M15.1087 19.6407H0.5M42.5 19.6407H27.8913" stroke="white" stroke-linecap="round"/>
+          </svg>
+          <svg class="case-studies__crosshair case-studies__crosshair--top-right" width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.4909 25.477V38.798M21.4909 0.5V13.821M15.1087 19.6407H0.5M42.5 19.6407H27.8913" stroke="white" stroke-linecap="round"/>
+          </svg>
+          <svg class="case-studies__crosshair case-studies__crosshair--bottom-left" width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.4909 25.477V38.798M21.4909 0.5V13.821M15.1087 19.6407H0.5M42.5 19.6407H27.8913" stroke="white" stroke-linecap="round"/>
+          </svg>
+          <svg class="case-studies__crosshair case-studies__crosshair--bottom-right" width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.4909 25.477V38.798M21.4909 0.5V13.821M15.1087 19.6407H0.5M42.5 19.6407H27.8913" stroke="white" stroke-linecap="round"/>
+          </svg>
+
+          <div class="case-studies__card-inner">
+            <!-- Image Side -->
+            <div class="case-studies__card-image">
+              <div class="case-studies__card-glow"></div>
+              <img src={study.image} alt={study.title} loading="lazy" />
+            </div>
+
+            <!-- Content Side -->
+            <div class="case-studies__card-content">
+              <!-- Stats Row -->
+              <div class="case-studies__card-stats">
+                {study.stats.map((stat) => (
+                  <div class="case-studies__card-stat">
+                    <span class="case-studies__card-stat-value">{stat.value}</span>
+                    <span class="case-studies__card-stat-label">{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Progress Bar -->
+              <div class="case-studies__card-progress">
+                <div class="case-studies__card-progress-bar" style={`width: ${study.progress}%`}></div>
+              </div>
+
+              <!-- Title & Description -->
+              <h3 class="case-studies__card-title">{study.title}</h3>
+              <p class="case-studies__card-description">{study.description}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .case-studies {
+    position: relative;
+    background: linear-gradient(108.67deg, #111111 0%, #161616 100%);
+    padding: 100px 0;
+  }
+
+  .case-studies__container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 64px;
+  }
+
+  /* Header */
+  .case-studies__header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .case-studies__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .case-studies__label-icon {
+    display: block;
+    width: 11px;
+    height: 11px;
+    background: var(--color-orange-primary);
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+
+  .case-studies__label-text {
+    font-family: var(--font-manrope);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: var(--color-white);
+    letter-spacing: 0.5px;
+  }
+
+  .case-studies__headline {
+    font-family: var(--font-manrope);
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 120%;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  /* Grid */
+  .case-studies__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  /* Card */
+  .case-studies__card {
+    position: relative;
+    background: #111111;
+    border: 1px solid #525252;
+    overflow: visible;
+  }
+
+  /* Corner Crosshairs */
+  .case-studies__crosshair {
+    position: absolute;
+    width: 43px;
+    height: 40px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .case-studies__crosshair--top-left {
+    top: -20px;
+    left: -21px;
+  }
+
+  .case-studies__crosshair--top-right {
+    top: -20px;
+    right: -21px;
+  }
+
+  .case-studies__crosshair--bottom-left {
+    bottom: -20px;
+    left: -21px;
+  }
+
+  .case-studies__crosshair--bottom-right {
+    bottom: -20px;
+    right: -21px;
+  }
+
+  .case-studies__card-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 443px;
+  }
+
+  /* Image */
+  .case-studies__card-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .case-studies__card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .case-studies__card-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background: var(--color-orange-primary);
+    filter: blur(80px);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Content */
+  .case-studies__card-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .case-studies__card-stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+
+  .case-studies__card-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .case-studies__card-stat-value {
+    font-family: var(--font-manrope);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--color-white);
+    line-height: 1.2;
+  }
+
+  .case-studies__card-stat-label {
+    font-family: var(--font-poppins);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--color-gray-medium);
+  }
+
+  /* Progress Bar */
+  .case-studies__card-progress {
+    width: 100%;
+    height: 4px;
+    background: #161616;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .case-studies__card-progress-bar {
+    height: 100%;
+    background: var(--color-orange-primary);
+    border-radius: 2px;
+  }
+
+  .case-studies__card-title {
+    font-family: var(--font-manrope);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 140%;
+    color: var(--color-white);
+    margin: 0 0 10px 0;
+  }
+
+  .case-studies__card-description {
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    color: var(--color-gray-medium);
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .case-studies {
+      padding: 80px 0;
+    }
+
+    .case-studies__container {
+      padding: 0 32px;
+    }
+
+    .case-studies__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .case-studies__headline {
+      font-size: 38px;
+    }
+
+    .case-studies__card-inner {
+      min-height: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .case-studies {
+      padding: 60px 0;
+    }
+
+    .case-studies__container {
+      padding: 0 20px;
+    }
+
+    .case-studies__headline {
+      font-size: 30px;
+    }
+
+    .case-studies__card-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .case-studies__card-image {
+      height: 240px;
+    }
+
+    .case-studies__card-content {
+      padding: 24px;
+    }
+
+    .case-studies__card-stat-value {
+      font-size: 26px;
+    }
+
+    .case-studies__card-title {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .case-studies {
+      padding: 40px 0;
+    }
+
+    .case-studies__container {
+      padding: 0 16px;
+    }
+
+    .case-studies__headline {
+      font-size: 24px;
+    }
+
+    .case-studies__card-image {
+      height: 200px;
+    }
+
+    .case-studies__card-content {
+      padding: 20px;
+    }
+
+    .case-studies__card-stat-value {
+      font-size: 22px;
+    }
+
+    .case-studies__card-title {
+      font-size: 16px;
+    }
+
+    .case-studies__card-description {
+      font-size: 14px;
+    }
+  }
+</style>

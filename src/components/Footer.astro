@@ -73,11 +73,18 @@ const socialLinks = [
     <!-- Bottom Bar -->
     <div class="footer__bottom">
       <div class="footer__bottom-left">
-        <span class="footer__copyright">© 2025 Stratalock.</span>
-        <span class="footer__rights">All Rights Reserved.</span>
+        <span class="footer__copyright">&copy; 2025</span>
+      </div>
+      <div class="footer__bottom-center">
+        <span class="footer__rights">All Rights Reserved. Stratalock USA</span>
       </div>
       <div class="footer__bottom-right">
-        <a href="#hero" class="footer__estimate-link">Free Estimate</a>
+        <a href="#" class="footer__scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+          SCROLL UP
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 13V1M7 1L1 7M7 1L13 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </div>
     </div>
   </div>
@@ -272,21 +279,37 @@ const socialLinks = [
     color: var(--color-gray-medium);
   }
 
+  .footer__bottom-center {
+    display: flex;
+  }
+
   .footer__bottom-right {
     display: flex;
   }
 
-  .footer__estimate-link {
+  .footer__scroll-up {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-family: var(--font-poppins);
     font-size: 14px;
     font-weight: 400;
+    text-transform: uppercase;
     color: var(--color-gray-medium);
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
-  .footer__estimate-link:hover {
+  .footer__scroll-up:hover {
     color: var(--color-white);
+  }
+
+  .footer__scroll-up svg {
+    transition: transform 0.2s ease;
+  }
+
+  .footer__scroll-up:hover svg {
+    transform: translateY(-2px);
   }
 
   /* Responsive */

@@ -1,0 +1,561 @@
+---
+import Button from './Button.astro';
+---
+
+<section class="about-hero">
+  <div class="about-hero__container">
+    <!-- Left Column: Content -->
+    <div class="about-hero__content">
+      <!-- Section Label -->
+      <div class="about-hero__label">
+        <span class="about-hero__label-icon"></span>
+        <span class="about-hero__label-text">About Stratalock</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="about-hero__headline">
+        <span class="about-hero__headline-gray">Geotechnical Experts Solving Foundation Problems </span><span class="about-hero__headline-white">the Right Way</span>
+      </h1>
+
+      <!-- Description -->
+      <p class="about-hero__description">
+        Founded by four professionals with over 40 years of combined experience in soil stabilization and structural repair.
+      </p>
+
+      <!-- CTA Button -->
+      <div class="about-hero__cta">
+        <Button text="Free Estimate" size="large" href="/estimate" />
+      </div>
+
+      <!-- Phone Number -->
+      <div class="about-hero__phone">
+        <svg class="about-hero__phone-icon" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 0.5V18.5M1 9.5H19" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="about-hero__phone-text">
+          Or Call: <a href="tel:8558505625" class="about-hero__phone-number">(855) 850-5625</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- Right Column: Image -->
+    <div class="about-hero__image-container">
+      <div class="about-hero__image-wrapper">
+        <img src="/images/about-stratalock-hero-image.webp" alt="Stratalock geotechnical experts at work" class="about-hero__image" />
+        <div class="about-hero__image-fade"></div>
+      </div>
+      <div class="about-hero__grid-overlay">
+        <svg class="about-hero__grid-svg" viewBox="0 0 620 444" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="aboutTightGrid" width="104" height="104" patternUnits="userSpaceOnUse">
+              <rect x="0" y="0" width="104" height="104" fill="none" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1"/>
+            </pattern>
+            <radialGradient id="aboutGridFade" cx="50%" cy="50%" r="65%" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="white" stop-opacity="1"/>
+              <stop offset="50%" stop-color="white" stop-opacity="1"/>
+              <stop offset="100%" stop-color="white" stop-opacity="0"/>
+            </radialGradient>
+            <mask id="aboutGridMask">
+              <rect x="0" y="0" width="620" height="444" fill="url(#aboutGridFade)"/>
+            </mask>
+          </defs>
+          <g mask="url(#aboutGridMask)">
+            <rect x="0" y="0" width="620" height="444" fill="url(#aboutTightGrid)" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .about-hero {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(270deg, var(--color-bg-dark-1) 58.76%, var(--color-bg-dark-2) 100%);
+    overflow: hidden;
+  }
+
+  /* Container */
+  .about-hero__container {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    height: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 0 64px 120px;
+    align-items: center;
+    margin-top: -3rem;
+  }
+
+  /* Left Column: Content */
+  .about-hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Section Label */
+  .about-hero__label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    margin-bottom: 39px;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+    cursor: default;
+  }
+
+  .about-hero__label-icon {
+    display: block;
+    width: 11px;
+    height: 11px;
+    background: var(--color-orange-primary);
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+
+  .about-hero__label-text {
+    font-family: var(--font-manrope);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: var(--color-white);
+    letter-spacing: 0.5px;
+  }
+
+  /* Hover effects - only on devices with hover capability */
+  @media (hover: hover) {
+    .about-hero__label-icon {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .about-hero__label:hover .about-hero__label-icon {
+      transform: rotate(45deg) scale(1.2);
+      box-shadow: 0 0 15px rgba(250, 117, 35, 0.5);
+    }
+
+    .about-hero__label-text {
+      transition: letter-spacing 0.3s ease;
+    }
+
+    .about-hero__label:hover .about-hero__label-text {
+      letter-spacing: 2px;
+    }
+  }
+
+  /* Headline */
+  .about-hero__headline {
+    font-family: var(--font-manrope);
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 105%;
+    margin: 0 0 0 0;
+    max-width: 613px;
+    margin-bottom: 18px;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+  }
+
+  .about-hero__headline-gray {
+    color: var(--color-gray-medium);
+  }
+
+  .about-hero__headline-white {
+    color: var(--color-white);
+  }
+
+  /* Description */
+  .about-hero__description {
+    font-family: var(--font-poppins);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 160%;
+    color: #949494;
+    max-width: 611px;
+    margin: 0;
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+  }
+
+  /* CTA Button */
+  .about-hero__cta {
+    margin-bottom: 23px;
+    animation: fadeInUp 0.8s ease-out 0.8s both;
+  }
+
+  /* Phone Number */
+  .about-hero__phone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    margin-top: 20px;
+    animation: fadeInUp 0.8s ease-out 1s both;
+    cursor: default;
+  }
+
+  .about-hero__phone-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 19px;
+    stroke: var(--color-white);
+  }
+
+  .about-hero__phone-text {
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--color-gray-medium);
+  }
+
+  .about-hero__phone-number {
+    color: var(--color-white);
+    text-decoration: none;
+  }
+
+  /* Hover effects - only on devices with hover capability */
+  @media (hover: hover) {
+    .about-hero__phone {
+      transition: transform 0.3s ease;
+    }
+
+    .about-hero__phone:hover {
+      transform: translateX(4px);
+    }
+
+    .about-hero__phone-icon {
+      transition: transform 0.3s ease, filter 0.3s ease, stroke 0.3s ease;
+    }
+
+    .about-hero__phone:hover .about-hero__phone-icon {
+      transform: rotate(90deg);
+      filter: drop-shadow(0 0 8px rgba(250, 117, 35, 0.5));
+      stroke: var(--color-orange-primary);
+    }
+
+    .about-hero__phone-text {
+      transition: color 0.3s ease;
+    }
+
+    .about-hero__phone:hover .about-hero__phone-text {
+      color: var(--color-white);
+    }
+
+    .about-hero__phone-number {
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .about-hero__phone-number:hover {
+      color: var(--color-orange-light);
+      text-shadow: 0 0 15px rgba(250, 117, 35, 0.3);
+    }
+
+    .about-hero__phone:hover .about-hero__phone-number {
+      color: var(--color-orange-light);
+      text-shadow: 0 0 15px rgba(250, 117, 35, 0.3);
+    }
+  }
+
+  /* Right Column: Image */
+  .about-hero__image-container {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    height: auto;
+    aspect-ratio: 620 / 444;
+    animation: fadeIn 1s ease-out 0.4s both;
+    cursor: pointer;
+  }
+
+  .about-hero__image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-hero__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s ease;
+  }
+
+  .about-hero__image-wrapper:hover .about-hero__image {
+    transform: scale(1.08);
+  }
+
+  .about-hero__image-fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+      linear-gradient(90deg, rgba(11, 11, 11, 0) 44.59%, rgba(11, 11, 11, 0.8) 100%),
+      linear-gradient(360deg, rgba(11, 11, 11, 0) 41.74%, rgba(11, 11, 11, 0.8) 100%),
+      linear-gradient(270deg, rgba(11, 11, 11, 0) 53.86%, rgba(11, 11, 11, 0.8) 100%),
+      linear-gradient(180deg, rgba(11, 11, 11, 0) 53.94%, rgba(11, 11, 11, 0.8) 100%);
+    pointer-events: none;
+  }
+
+  .about-hero__grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .about-hero__grid-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .about-hero__content,
+    .about-hero__label,
+    .about-hero__headline,
+    .about-hero__description,
+    .about-hero__cta,
+    .about-hero__phone,
+    .about-hero__image-container {
+      animation: none;
+      opacity: 1;
+    }
+
+    .about-hero__label-icon,
+    .about-hero__label-text,
+    .about-hero__phone,
+    .about-hero__phone-icon,
+    .about-hero__phone-text,
+    .about-hero__phone-number,
+    .about-hero__image {
+      transition: none;
+    }
+  }
+
+  /* Responsive Design */
+
+  /* Large tablets and small desktops (1200px - 1024px) */
+  @media (max-width: 1200px) {
+    .about-hero__container {
+      padding: 0 48px 100px;
+      gap: 50px;
+    }
+
+    .about-hero__headline {
+      font-size: 46px;
+    }
+
+    .about-hero__description {
+      font-size: 18px;
+    }
+  }
+
+  /* Tablets and below (1024px and down) */
+  @media (max-width: 1024px) {
+    .about-hero {
+      min-height: auto;
+    }
+
+    .about-hero__container {
+      grid-template-columns: 1fr;
+      gap: 60px;
+      padding: 60px 40px 80px;
+      margin-top: 0;
+      min-height: auto;
+    }
+
+    .about-hero__image-container {
+      width: 100%;
+      max-width: 620px;
+      margin: 0 auto;
+      order: -1;
+      min-height: 350px;
+    }
+
+    .about-hero__headline {
+      font-size: 42px;
+      max-width: 100%;
+    }
+
+    .about-hero__description {
+      font-size: 18px;
+      max-width: 100%;
+      margin-bottom: 35px;
+    }
+
+    .about-hero__label {
+      margin-bottom: 30px;
+    }
+
+    .about-hero__cta {
+      margin-bottom: 20px;
+    }
+  }
+
+  /* Mobile landscape and small tablets (768px and down) */
+  @media (max-width: 768px) {
+    .about-hero__container {
+      gap: 50px;
+      padding: 40px 24px 60px;
+    }
+
+    .about-hero__image-container {
+      order: 1;
+      min-height: 280px;
+    }
+
+    .about-hero__content {
+      order: 0;
+    }
+
+    .about-hero__label {
+      margin-bottom: 24px;
+    }
+
+    .about-hero__label-text {
+      font-size: 14px;
+    }
+
+    .about-hero__headline {
+      font-size: 36px;
+      margin-bottom: 16px;
+      line-height: 110%;
+    }
+
+    .about-hero__description {
+      font-size: 16px;
+      line-height: 150%;
+      margin-bottom: 32px;
+    }
+
+    .about-hero__cta {
+      margin-bottom: 18px;
+    }
+
+    .about-hero__phone {
+      margin-top: 16px;
+    }
+
+    .about-hero__phone-text {
+      font-size: 15px;
+    }
+  }
+
+  /* Mobile portrait (480px and down) */
+  @media (max-width: 480px) {
+    .about-hero__container {
+      padding: 30px 20px 50px;
+      gap: 40px;
+    }
+
+    .about-hero__label {
+      margin-bottom: 20px;
+    }
+
+    .about-hero__label-icon {
+      width: 9px;
+      height: 9px;
+    }
+
+    .about-hero__label-text {
+      font-size: 13px;
+    }
+
+    .about-hero__headline {
+      font-size: 28px;
+      margin-bottom: 14px;
+      line-height: 115%;
+    }
+
+    .about-hero__description {
+      font-size: 15px;
+      line-height: 145%;
+      margin-bottom: 28px;
+    }
+
+    .about-hero__cta {
+      margin-bottom: 16px;
+    }
+
+    .about-hero__phone {
+      margin-top: 12px;
+      gap: 8px;
+    }
+
+    .about-hero__phone-icon {
+      width: 18px;
+      height: 17px;
+    }
+
+    .about-hero__phone-text {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .about-hero__image-container {
+      min-height: 240px;
+    }
+  }
+
+  /* Small mobile devices (375px and down) */
+  @media (max-width: 375px) {
+    .about-hero__container {
+      padding: 24px 16px 40px;
+      gap: 32px;
+    }
+
+    .about-hero__headline {
+      font-size: 24px;
+      line-height: 120%;
+    }
+
+    .about-hero__description {
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .about-hero__phone-text {
+      font-size: 13px;
+    }
+
+    .about-hero__image-container {
+      min-height: 200px;
+    }
+  }
+</style>

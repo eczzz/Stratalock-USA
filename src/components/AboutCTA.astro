@@ -1,0 +1,281 @@
+---
+import Button from './Button.astro';
+
+const features = [
+  'Licensed & Insured Contractors',
+  '40+ Years Combined Experience',
+  'Minimal Disruption Guaranteed'
+];
+---
+
+<section class="about-cta">
+  <div class="about-cta__container">
+    <!-- Section Label -->
+    <div class="about-cta__label">
+      <span class="about-cta__label-icon"></span>
+      <span class="about-cta__label-text">Get Started</span>
+    </div>
+
+    <!-- Headline -->
+    <h2 class="about-cta__headline">
+      <span class="about-cta__headline-gray">Schedule a Free Foundation Assessment</span><br>
+      <span class="about-cta__headline-white">Today.</span>
+    </h2>
+
+    <!-- Description -->
+    <p class="about-cta__description">
+      Our team will evaluate your property, identify underlying soil issues, and provide a comprehensive repair plan with transparent pricing.
+    </p>
+
+    <!-- Features -->
+    <div class="about-cta__features">
+      {features.map((feature) => (
+        <div class="about-cta__feature">
+          <div class="about-cta__feature-icon">
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 6L6 11L15 1" stroke="#FA7523" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="about-cta__feature-text">{feature}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA Button -->
+    <div class="about-cta__button">
+      <Button text="Schedule Estimate" size="large" href="/estimate" />
+    </div>
+
+    <!-- Phone Link -->
+    <div class="about-cta__phone">
+      <svg class="about-cta__phone-icon" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 0.5V18.5M1 9.5H19" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="about-cta__phone-text">
+        Or Call: <a href="tel:8558505625" class="about-cta__phone-number">(855) 850-5625</a>
+      </span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-cta {
+    position: relative;
+    background: linear-gradient(108.67deg, #111111 0%, #161616 100%);
+    padding: 100px 0;
+  }
+
+  .about-cta__container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Section Label */
+  .about-cta__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .about-cta__label-icon {
+    display: block;
+    width: 11px;
+    height: 11px;
+    background: var(--color-orange-primary);
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+
+  .about-cta__label-text {
+    font-family: var(--font-manrope);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: var(--color-white);
+    letter-spacing: 0.5px;
+  }
+
+  /* Headline */
+  .about-cta__headline {
+    font-family: var(--font-manrope);
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 120%;
+    margin: 0 0 24px 0;
+    max-width: 800px;
+  }
+
+  .about-cta__headline-gray {
+    color: var(--color-gray-medium);
+  }
+
+  .about-cta__headline-white {
+    color: var(--color-white);
+  }
+
+  /* Description */
+  .about-cta__description {
+    font-family: var(--font-poppins);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    color: var(--color-gray-medium);
+    margin: 0 0 40px 0;
+    max-width: 700px;
+  }
+
+  /* Features */
+  .about-cta__features {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .about-cta__feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .about-cta__feature-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #090909;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .about-cta__feature-text {
+    font-family: var(--font-poppins);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 160%;
+    color: var(--color-white);
+  }
+
+  /* CTA Button */
+  .about-cta__button {
+    margin-bottom: 20px;
+  }
+
+  /* Phone */
+  .about-cta__phone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .about-cta__phone-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 19px;
+    stroke: var(--color-white);
+    transition: all 0.3s ease;
+  }
+
+  .about-cta__phone:hover .about-cta__phone-icon {
+    filter: drop-shadow(0 0 8px rgba(250, 117, 35, 0.5));
+    stroke: var(--color-orange-light);
+  }
+
+  .about-cta__phone-text {
+    font-family: var(--font-poppins);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--color-gray-medium);
+    transition: color 0.3s ease;
+  }
+
+  .about-cta__phone:hover .about-cta__phone-text {
+    color: var(--color-white);
+  }
+
+  .about-cta__phone-number {
+    color: var(--color-white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .about-cta__phone-number:hover {
+    color: var(--color-orange-light);
+    text-shadow: 0 0 15px rgba(250, 117, 35, 0.3);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .about-cta {
+      padding: 80px 0;
+    }
+
+    .about-cta__container {
+      padding: 0 32px;
+    }
+
+    .about-cta__headline {
+      font-size: 38px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-cta {
+      padding: 60px 0;
+    }
+
+    .about-cta__container {
+      padding: 0 20px;
+    }
+
+    .about-cta__headline {
+      font-size: 30px;
+    }
+
+    .about-cta__description {
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 30px;
+    }
+
+    .about-cta__features {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-cta {
+      padding: 40px 0;
+    }
+
+    .about-cta__container {
+      padding: 0 16px;
+    }
+
+    .about-cta__headline {
+      font-size: 24px;
+    }
+
+    .about-cta__description {
+      font-size: 14px;
+    }
+
+    .about-cta__features {
+      align-items: flex-start;
+    }
+  }
+</style>
