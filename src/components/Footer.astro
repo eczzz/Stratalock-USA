@@ -180,6 +180,21 @@ const socialLinks = [
 
   .footer__cta-text--highlight {
     color: var(--color-white);
+    position: relative;
+    display: inline;
+    background-image: linear-gradient(90deg, var(--color-orange-primary), var(--color-orange-light));
+    background-size: 0% 3px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: color 0.3s ease, background-size 0.4s ease;
+    cursor: pointer;
+  }
+
+  @media (hover: hover) {
+    .footer__cta-text--highlight:hover {
+      color: var(--color-orange-light);
+      background-size: 100% 3px;
+    }
   }
 
   /* Navigation */
