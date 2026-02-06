@@ -12,7 +12,9 @@
       </div>
 
       <p class="mission__statement">
-        Deliver <span class="mission__statement--highlight">innovative geotechnical solutions</span> for <span class="mission__statement--highlight">foundation&nbsp;repair, infrastructure&nbsp;repair, waterproofing</span>&nbsp;and <span class="mission__statement--highlight">soil&nbsp;stabilization.</span> <span class="mission__statement--highlight">Minimize environmental&nbsp;impact</span>&nbsp;- with integrity and precision in every project.
+        <span class="mission__statement-line">Deliver <span class="mission__statement--highlight">innovative geotechnical solutions</span> for <span class="mission__statement--highlight">foundation repair, infrastructure repair, waterproofing and soil stabilization.</span></span>
+        <br><br>
+        <span class="mission__statement-line"><span class="mission__statement--highlight">Minimize environmental impact</span> - with integrity and precision in every project.</span>
       </p>
     </div>
 
@@ -110,6 +112,17 @@
     color: #7C7C7C;
     margin: 0;
     max-width: 816px;
+  }
+
+  .mission__statement-line {
+    display: inline;
+  }
+
+  /* Prevent wrapping of first sentence on larger screens */
+  @media (min-width: 1400px) {
+    .mission__statement-line:first-child {
+      white-space: nowrap;
+    }
   }
 
   .mission__statement--highlight {
