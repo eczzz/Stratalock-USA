@@ -12,7 +12,7 @@
       </div>
 
       <p class="mission__statement">
-        Deliver <span class="mission__statement--highlight">innovative geotechnical<br class="mobile-break"> solutions</span> for <span class="mission__statement--highlight">foundation<br class="mobile-break"> repair, infrastructure<br class="mobile-break"> repair, waterproofing<br class="mobile-break"> <span class="mission__statement--nowrap">and soil stabilization.</span></span>
+        Deliver <span class="mission__statement--highlight">innovative geotechnical solutions</span> for <span class="mission__statement--highlight"><span class="mission__statement--nowrap-desktop">foundation repair, infrastructure repair,</span> <span class="mission__statement--nowrap">waterproofing and soil stabilization.</span></span>
         <br><br>
         <span class="mission__statement--highlight"><span class="mission__statement--nowrap-desktop">Minimize environmental impact</span></span> - with integrity and precision in every project.
       </p>
@@ -122,17 +122,8 @@
     white-space: nowrap;
   }
 
-  /* Hide mobile breaks on desktop */
-  .mobile-break {
-    display: none;
-  }
-
-  /* Show mobile breaks and allow natural wrapping on mobile */
+  /* Allow natural wrapping on mobile */
   @media (max-width: 768px) {
-    .mobile-break {
-      display: inline;
-    }
-
     .mission__statement--nowrap {
       white-space: normal;
     }
