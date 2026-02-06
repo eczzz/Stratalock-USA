@@ -12,9 +12,9 @@
       </div>
 
       <p class="mission__statement">
-        Deliver <span class="mission__statement--highlight">innovative geotechnical solutions</span> for <span class="mission__statement--highlight">foundation&nbsp;repair, infrastructure&nbsp;repair, <span class="mission__statement--nowrap">waterproofing and soil&nbsp;stabilization.</span></span>
+        Deliver <span class="mission__statement--highlight">innovative geotechnical solutions</span> for <span class="mission__statement--highlight"><span class="mission__statement--nowrap-desktop">foundation repair, infrastructure repair,</span> <span class="mission__statement--nowrap">waterproofing and soil stabilization.</span></span>
         <br><br>
-        <span class="mission__statement--highlight">Minimize environmental&nbsp;impact</span> - with integrity and precision in every project.
+        <span class="mission__statement--highlight"><span class="mission__statement--nowrap-desktop">Minimize environmental impact</span></span> - with integrity and precision in every project.
       </p>
     </div>
 
@@ -116,6 +116,21 @@
 
   .mission__statement--nowrap {
     white-space: nowrap;
+  }
+
+  .mission__statement--nowrap-desktop {
+    white-space: nowrap;
+  }
+
+  /* Allow natural wrapping on mobile */
+  @media (max-width: 768px) {
+    .mission__statement--nowrap {
+      white-space: normal;
+    }
+
+    .mission__statement--nowrap-desktop {
+      white-space: normal;
+    }
   }
 
   .mission__statement--highlight {
