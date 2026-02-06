@@ -1,14 +1,24 @@
 ---
 import Button from './Button.astro';
 
+const currentPath = Astro.url.pathname;
+
 const navItems = [
-  { name: 'Home', href: '/', active: true },
+  { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services' },
   { name: 'Service Areas', href: '/service-areas' },
   { name: 'Process', href: '/process' },
   { name: 'Contact', href: '/contact' }
 ];
+
+// Function to check if a nav item is active
+const isActive = (href: string) => {
+  if (href === '/') {
+    return currentPath === '/';
+  }
+  return currentPath.startsWith(href);
+};
 ---
 
 <header class="header">
@@ -26,7 +36,7 @@ const navItems = [
       {navItems.map(item => (
         <a
           href={item.href}
-          class={`header__nav-item ${item.active ? 'header__nav-item--active' : ''}`}
+          class={`header__nav-item ${isActive(item.href) ? 'header__nav-item--active' : ''}`}
         >
           {item.name}
         </a>
@@ -57,7 +67,7 @@ const navItems = [
         {navItems.map((item, index) => (
           <a
             href={item.href}
-            class={`header__mobile-nav-item ${item.active ? 'header__mobile-nav-item--active' : ''}`}
+            class={`header__mobile-nav-item ${isActive(item.href) ? 'header__mobile-nav-item--active' : ''}`}
             style={`animation-delay: ${0.1 + index * 0.05}s;`}
           >
             {item.name}
